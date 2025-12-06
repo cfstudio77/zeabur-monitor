@@ -91,7 +91,7 @@ async function queryZeabur(token, query) {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-        'Content-Length': data.length
+        'Content-Length': Buffer.byteLength(data)
       },
       timeout: 10000
     };
@@ -644,19 +644,27 @@ app.post('/api/service/logs', requireAuth, express.json(), async (req, res) => {
 
 // 重命名项目
 app.post('/api/project/rename', requireAuth, async (req, res) => {
-  const { token, projectId, newName } = req.body;
+  const { accountId, projectId, newName } = req.body;
   
-  console.log(`📝 收到重命名请求: projectId=${projectId}, newName=${newName}`);
+  console.log(`📝 收到重命名请求: accountId=${accountId}, projectId=${projectId}, newName=${newName}`);
   
-  if (!token || !projectId || !newName) {
+  if (!accountId || !projectId || !newName) {
     return res.status(400).json({ error: '缺少必要参数' });
   }
   
   try {
+    // 从服务器存储中获取账号token
+    const serverAccounts = loadServerAccounts();
+    const account = serverAccounts.find(acc => (acc.id || acc.name) === accountId);
+    
+    if (!account || !account.token) {
+      return res.status(404).json({ error: '未找到账号或token' });
+    }
+    
     const mutation = `mutation { renameProject(_id: "${projectId}", name: "${newName}") }`;
     console.log(`🔍 发送 GraphQL mutation:`, mutation);
     
-    const result = await queryZeabur(token, mutation);
+    const result = await queryZeabur(account.token, mutation);
     console.log(`📥 API 响应:`, JSON.stringify(result, null, 2));
     
     if (result.data?.renameProject) {
