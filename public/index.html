@@ -126,105 +126,123 @@
     }
     .balance.low { color: #ff9800; }
     .balance.critical { color: #f44336; }
-    .horizontal-projects-container {
+    .user-projects-container {
       display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-direction: column;
+      gap: 15px;
       margin-top: 10px;
-      align-items: stretch;
     }
-    .horizontal-project-item {
+    
+    .user-project-section {
+      background: rgba(255,255,255,var(--card-opacity));
+      backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
+      -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
+      border-radius: 12px;
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,var(--border-opacity-light));
+      box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
+    }
+    
+    .user-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .user-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    .user-balance {
+      font-size: 14px;
+      color: #4CAF50;
+      font-weight: 600;
+    }
+    
+    .server-info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 8px;
+    }
+    
+    .server-info-item {
+      flex: 1;
+      min-width: 150px;
+      background: rgba(240, 249, 255, 0.3);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    
+    .server-name {
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: #60a5fa;
+    }
+    
+    .server-usage {
+      color: #93c5fd;
+    }
+    
+    .projects-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 12px 0;
+    }
+    
+    .project-card-horizontal {
+      flex: 1;
+      min-width: 200px;
       background: rgba(255,255,255,var(--card-opacity));
       backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
       -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
       border-radius: 12px;
       padding: 12px;
       border: 1px solid rgba(255,255,255,var(--border-opacity-light));
-      position: relative;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      min-height: 200px;
-      width: 240px;
+      height: 100%;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
     }
-    .user-project-container {
-      display: grid;
-      grid-template-columns: max-content 1fr 1fr;
-      grid-template-rows: auto auto auto auto auto auto auto;
-      gap: 8px;
-      align-items: start;
-      padding: 12px;
-      border: 1px solid #e2e8f0;
+    
+    .domains-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 12px 0;
+    }
+    
+    .domain-card {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(220, 252, 231, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.3);
       border-radius: 8px;
-      margin-bottom: 12px;
-      background-color: #f8fafc;
+      padding: 10px;
+      font-size: 12px;
     }
-    .user-header {
-      grid-column: 1 / 4;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #cbd5e1;
-    }
-    .user-name {
-      font-weight: bold;
-      font-size: 16px;
-    }
-    .user-remaining {
-      font-size: 14px;
-      color: #48bb78;
-    }
-    .server-info {
-      grid-column: 1 / 4;
-      display: flex;
-      gap: 20px;
-    }
-    .server-item {
-      display: flex;
-      flex-direction: column;
-      min-width: 150px;
-    }
-    .server-name {
-      font-weight: 500;
-      margin-bottom: 4px;
-    }
-    .server-usage {
-      color: #4a5568;
-    }
-    .server-address {
-      grid-column: 1 / 4;
-      display: flex;
-      gap: 20px;
-    }
-    .project-stats {
-      grid-column: 1 / 4;
-      display: flex;
-      gap: 20px;
-    }
-    .project-list {
-      grid-column: 1 / 4;
-      display: flex;
-      gap: 20px;
-    }
-    .domain-list {
-      grid-column: 1 / 4;
-      display: flex;
-      gap: 20px;
-    }
-    .manage-icon {
-      grid-column: 1 / 4;
+    
+    .manage-row {
       text-align: center;
-      padding-top: 8px;
-    }
-    .version-stats {
-      grid-column: 1 / 4;
-      padding-top: 8px;
-      border-top: 1px solid #cbd5e1;
+      padding: 12px 0;
       margin-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .version-stats-row {
+      padding: 8px 0;
+      margin-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 12px;
+      color: #9ca3af;
     }
     @keyframes shimmer {
       0% { background-position: -1000px 0; }
@@ -241,8 +259,8 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      min-height: 200px;
-      width: 240px;
+      min-height: auto;
+      height: 100%;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
     }
@@ -741,45 +759,16 @@
               <div style="font-size: 12px; color: #666; margin-bottom: 10px; padding: 10px; background: #f0f9ff; border-radius: 6px;">
                 💡 以下账号来自服务器配置（.env 文件），无法在此删除
               </div>
-              <div class="user-project-container">
-        <div class="user-header">
-          <div class="user-name">{{ account.name }}</div>
-          <div class="user-remaining">{{ account.data?.email || account.data?.username || '服务器配置' }} | ${{ (account.data.credit / 100).toFixed(2) }}</div>
-        </div>
-        <div class="server-info">
-          <div class="server-item" v-for="project in account.projects" :key="project._id">
-            <div class="server-name">{{ project.name }}</div>
-            <div class="server-usage">$ {{ formatCost(project.cost) }}</div>
-          </div>
-        </div>
-        <div class="server-address">
-          <div class="address-item" v-for="project in account.projects" :key="project._id">
-            <div>{{ project.region }}</div>
-          </div>
-        </div>
-        <div class="project-stats">
-          <div class="stats-item" v-for="project in account.projects" :key="project._id">
-            <div>服务: {{ project.services.length }}</div>
-            <div>运行: {{ project.services.filter(s => s.status === 'RUNNING').length }}</div>
-          </div>
-        </div>
-        <div class="project-list">
-          <div class="project-item" v-for="project in account.projects" :key="project._id">
-            <div>{{ project.name }}</div>
-          </div>
-        </div>
-        <div class="domain-list">
-          <div class="domain-item" v-for="project in account.projects" :key="project._id">
-            <div v-for="service in project.services" :key="service._id">{{ service.name }}</div>
-          </div>
-        </div>
-        <div class="manage-icon">
-          <button @click="toggleAccount(account.name)">⚙️ 管理</button>
-        </div>
-        <div class="version-stats">
-          <div>版本统计信息</div>
-        </div>
-      </div>
+              <div v-for="account in accounts" :key="'server-' + account.name" 
+                   style="background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <div style="flex: 1;">
+                  <div style="font-weight: 600; color: #333; margin-bottom: 4px;">{{ account.name }}</div>
+                  <div style="font-size: 12px; color: #999;">{{ account.data?.email || account.data?.username || '服务器配置' }}</div>
+                </div>
+                <span style="font-size: 12px; color: #999; padding: 6px 12px; background: #e5e7eb; border-radius: 6px;">
+                  🔒 服务器配置
+                </span>
+              </div>
             </div>
             
             <div v-if="managedAccounts.length === 0 && accounts.length === 0" style="text-align: center; color: #999; padding: 30px;">
@@ -978,103 +967,157 @@
           ❌ 错误: {{ account.error }}
         </div>
         
-        <div v-if="account.projects && isAccountExpanded(account.name)" class="horizontal-projects-container">
-          <div class="horizontal-project-item" v-for="project in account.projects" :key="project._id">
-            <!-- 项目头部 -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <div class="project-name" style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0;">
-                <span v-if="!project.isEditing" style="font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📦 {{ project.name }}</span>
-                <input 
-                  v-else
-                  v-model="project.editingName"
-                  @keyup.enter="saveProjectName(account, project)"
-                  @keyup.esc="cancelEditProjectName(project)"
-                  @blur="saveProjectName(account, project)"
-                  style="flex: 1; padding: 2px 6px; border: 2px solid #f696c6; border-radius: 4px; font-size: 13px; font-weight: 600; outline: none;"
-                  ref="projectNameInput"
-                />
-                <button 
-                  v-if="!project.isEditing"
-                  @click="startEditProjectName(project)"
-                  style="padding: 2px 6px; background: rgba(246, 150, 198, 0.2); border: 1px solid rgba(246, 150, 198, 0.4); border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 12px;"
-                  title="重命名"
-                >
-                  ✏️
-                </button>
-              </div>
-              <div style="font-size: 16px; font-weight: 700; color: #2196F3; white-space: nowrap;">
-                ${{ formatCost(project.cost) }}
-              </div>
+        <div v-if="account.projects && isAccountExpanded(account.name)" class="user-project-section">
+          <!-- 用户头信息：用户名和剩余用量 -->
+          <div class="user-header">
+            <div class="user-name">{{ account.name }}</div>
+            <div class="user-balance">${{ (account.data.credit / 100).toFixed(2) }}</div>
+          </div>
+          
+          <!-- 服务器信息行 -->
+          <div class="server-info-row">
+            <div class="server-info-item" v-for="project in account.projects" :key="'server-' + project._id">
+              <div class="server-name">{{ project.name }}</div>
+              <div class="server-usage">$ {{ formatCost(project.cost) }}</div>
             </div>
-            
-            <!-- 项目信息 -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 11px; color: #999;">
-              <span>📍 {{ project.region }}</span>
-              <span>本月用量</span>
+          </div>
+          
+          <!-- 服务器地址行（复用相同数据）-->
+          <div class="server-info-row">
+            <div class="server-info-item" v-for="project in account.projects" :key="'addr-' + project._id">
+              <div class="server-name">📍 {{ project.region }}</div>
             </div>
-            <div style="display: flex; gap: 10px; margin-bottom: 6px; font-size: 11px; color: #666;">
-              <span style="display: flex; align-items: center; gap: 4px;">
-                <span>🔧</span>
-                <span style="font-weight: 600;">{{ project.services.length }}</span>
-                <span>个服务</span>
-              </span>
-              <span style="display: flex; align-items: center; gap: 4px;">
-                <span>✅</span>
-                <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'RUNNING').length }}</span>
-                <span>运行中</span>
-              </span>
-              <span style="display: flex; align-items: center; gap: 4px;">
-                <span>⏸️</span>
-                <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'SUSPENDED').length }}</span>
-                <span>已暂停</span>
-              </span>
+          </div>
+          
+          <!-- 项目统计行 -->
+          <div class="server-info-row">
+            <div class="server-info-item" v-for="project in account.projects" :key="'stats-' + project._id">
+              <div class="server-name">服务: {{ project.services.length }}</div>
+              <div class="server-usage">运行: {{ project.services.filter(s => s.status === 'RUNNING').length }}</div>
             </div>
-            <div class="services-container">
-            <div v-for="service in project.services" :key="service._id" class="service-item">
-              <!-- 服务名称 -->
-              <div style="font-weight: 600; font-size: 12px; color: #333; margin-bottom: 6px;">
-                {{ service.name }}
+          </div>
+          
+          <!-- 项目行 -->
+          <div class="projects-row">
+            <div v-for="project in account.projects" :key="project._id" class="project-card-horizontal">
+              <!-- 项目头部 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <div class="project-name" style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0;">
+                  <span v-if="!project.isEditing" style="font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📦 {{ project.name }}</span>
+                  <input 
+                    v-else
+                    v-model="project.editingName"
+                    @keyup.enter="saveProjectName(account, project)"
+                    @keyup.esc="cancelEditProjectName(project)"
+                    @blur="saveProjectName(account, project)"
+                    style="flex: 1; padding: 2px 6px; border: 2px solid #f696c6; border-radius: 4px; font-size: 13px; font-weight: 600; outline: none;"
+                    ref="projectNameInput"
+                  />
+                  <button 
+                    v-if="!project.isEditing"
+                    @click="startEditProjectName(project)"
+                    style="padding: 2px 6px; background: rgba(246, 150, 198, 0.2); border: 1px solid rgba(246, 150, 198, 0.4); border-radius: 4px; cursor: pointer; transition: all 0.2s; font-size: 12px;"
+                    title="重命名"
+                  >
+                    ✏️
+                  </button>
+                </div>
+                <div style="font-size: 16px; font-weight: 700; color: #2196F3; white-space: nowrap;">
+                  ${{ formatCost(project.cost) }}
+                </div>
               </div>
               
-              <!-- 操作按钮 -->
-              <div style="display: flex; gap: 4px; flex-wrap: wrap;">
-                <span :class="['status', service.status.toLowerCase()]">
-                  {{ service.status === 'RUNNING' ? '运行中' : service.status === 'SUSPENDED' ? '已暂停' : service.status }}
+              <!-- 项目信息 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 11px; color: #999;">
+                <span>📍 {{ project.region }}</span>
+                <span>本月用量</span>
+              </div>
+              <div style="display: flex; gap: 10px; margin-bottom: 6px; font-size: 11px; color: #666;">
+                <span style="display: flex; align-items: center; gap: 4px;">
+                  <span>🔧</span>
+                  <span style="font-weight: 600;">{{ project.services.length }}</span>
+                  <span>个服务</span>
                 </span>
-                <button v-if="service.status === 'RUNNING'" 
-                        @click="pauseService(account, project, service)" 
-                        style="padding: 4px 8px; background: #ff9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                  ⏸️ 暂停
-                </button>
-                <button @click="restartService(account, project, service)" 
-                        style="padding: 4px 8px; background: #007aff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                  {{ service.status === 'SUSPENDED' ? '▶️ 启动' : '🔄 重启' }}
-                </button>
-                <button @click="showServiceLogs(account, project, service)" 
-                        style="padding: 4px 8px; background: #af52de; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                  📋 日志
-                </button>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                  <span>✅</span>
+                  <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'RUNNING').length }}</span>
+                  <span>运行中</span>
+                </span>
+                <span style="display: flex; align-items: center; gap: 4px;">
+                  <span>⏸️</span>
+                  <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'SUSPENDED').length }}</span>
+                  <span>已暂停</span>
+                </span>
+              </div>
+              <div class="services-container">
+              <div v-for="service in project.services" :key="service._id" class="service-item">
+                <!-- 服务名称 -->
+                <div style="font-weight: 600; font-size: 12px; color: #333; margin-bottom: 6px;">
+                  {{ service.name }}
+                </div>
+                
+                <!-- 操作按钮 -->
+                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                  <span :class="['status', service.status.toLowerCase()]">
+                    {{ service.status === 'RUNNING' ? '运行中' : service.status === 'SUSPENDED' ? '已暂停' : service.status }}
+                  </span>
+                  <button v-if="service.status === 'RUNNING'" 
+                          @click="pauseService(account, project, service)" 
+                          style="padding: 4px 8px; background: #ff9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                    ⏸️ 暂停
+                  </button>
+                  <button @click="restartService(account, project, service)" 
+                          style="padding: 4px 8px; background: #007aff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                    {{ service.status === 'SUSPENDED' ? '▶️ 启动' : '🔄 重启' }}
+                  </button>
+                  <button @click="showServiceLogs(account, project, service)" 
+                          style="padding: 4px 8px; background: #af52de; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                    📋 日志
+                  </button>
+                </div>
+              </div>
+              <div v-if="project.services.length === 0" style="color: #999; font-size: 14px; text-align: center; padding: 20px;">
+                暂无服务
+              </div>
+              </div>
+              
+              <!-- 域名 -->
+              <div v-if="getProjectDomains(project).length > 0" style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.2);">
+                <a v-for="domainInfo in getProjectDomains(project)" 
+                   :key="domainInfo.domain" 
+                   :href="'https://' + domainInfo.domain" 
+                   target="_blank"
+                   style="display: flex; align-items: center; gap: 4px; padding: 4px 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 6px; font-size: 10px; font-weight: 600; margin-bottom: 4px; transition: all 0.2s;"
+                   @mouseover="$event.target.style.transform = 'translateY(-1px)'"
+                   @mouseout="$event.target.style.transform = 'translateY(0)'">
+                  <span style="font-size: 12px;">🌐</span>
+                  <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;">{{ domainInfo.domain }}</span>
+                  <span v-if="domainInfo.isGenerated" style="background: rgba(255,255,255,0.25); padding: 1px 4px; border-radius: 4px; font-size: 9px;">自动</span>
+                </a>
               </div>
             </div>
-            <div v-if="project.services.length === 0" style="color: #999; font-size: 14px; text-align: center; padding: 20px;">
-              暂无服务
+          </div>
+          
+          <!-- 域名行（可选，额外显示域名）-->
+          <div class="domains-row">
+            <div v-for="project in account.projects" :key="'domain-' + project._id" class="domain-card">
+              <div style="font-weight: 600; margin-bottom: 6px; color: #10b981;">{{ project.name }} 的域名</div>
+              <div v-for="domainInfo in getProjectDomains(project)" :key="'dom-' + domainInfo.domain">
+                <div style="padding: 4px 0; border-bottom: 1px dashed rgba(255,255,255,0.1);">{{ domainInfo.domain }}</div>
+              </div>
             </div>
-            </div>
-            
-            <!-- 域名 -->
-            <div v-if="getProjectDomains(project).length > 0" style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.2);">
-              <a v-for="domainInfo in getProjectDomains(project)" 
-                 :key="domainInfo.domain" 
-                 :href="'https://' + domainInfo.domain" 
-                 target="_blank"
-                 style="display: flex; align-items: center; gap: 4px; padding: 4px 8px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 6px; font-size: 10px; font-weight: 600; margin-bottom: 4px; transition: all 0.2s;"
-                 @mouseover="$event.target.style.transform = 'translateY(-1px)'"
-                 @mouseout="$event.target.style.transform = 'translateY(0)'">
-                <span style="font-size: 12px;">🌐</span>
-                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;">{{ domainInfo.domain }}</span>
-                <span v-if="domainInfo.isGenerated" style="background: rgba(255,255,255,0.25); padding: 1px 4px; border-radius: 4px; font-size: 9px;">自动</span>
-              </a>
-            </div>
+          </div>
+          
+          <!-- 管理图标行 -->
+          <div class="manage-row">
+            <button @click="toggleAccount(account.name)" style="padding: 8px 16px; background: rgba(246, 150, 198, 0.2); border: 1px solid rgba(246, 150, 198, 0.4); border-radius: 8px; cursor: pointer; transition: all 0.2s; color: #f696c6; font-weight: 600;">
+              ⚙️ 管理
+            </button>
+          </div>
+          
+          <!-- 版本统计信息 -->
+          <div v-if="account.projects.length > 0" class="version-stats-row">
+            <div>版本统计信息</div>
           </div>
         </div>
       </div>
