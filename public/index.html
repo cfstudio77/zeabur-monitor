@@ -126,100 +126,6 @@
     }
     .balance.low { color: #ff9800; }
     .balance.critical { color: #f44336; }
-    .horizontal-projects-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    
-    .horizontal-project-card {
-      background: rgba(255,255,255,var(--card-opacity));
-      backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
-      -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
-      border-radius: 12px;
-      padding: 12px;
-      border: 1px solid rgba(255, 255, 255, var(--border-opacity-light));
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      min-height: auto;
-      width: calc(20% - 8px); /* 每行最多5个 */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
-    }
-    
-    .horizontal-project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -2px;
-      right: -2px;
-      bottom: 0;
-      background: linear-gradient(135deg, #f696c6, #fbb6d8, #fdd7e8);
-      border-radius: 16px;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    
-    .horizontal-project-card:hover {
-      transform: translateY(-4px) scale(1.02);
-    }
-    
-    .horizontal-project-card:hover::before {
-      opacity: 1;
-    }
-    
-    .horizontal-service-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    
-    .horizontal-service-item {
-      flex: 1;
-      min-width: 150px;
-      background: rgba(255,255,255,var(--service-opacity));
-      backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
-      -webkit-backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
-      padding: 8px 10px;
-      margin: 4px 0;
-      border-radius: 8px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255, 255, 255, var(--border-opacity-strong));
-      min-height: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, var(--shadow-opacity-light));
-    }
-    
-    .horizontal-service-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: left 0.5s;
-    }
-    
-    .horizontal-service-item:hover {
-      background: rgba(255,255,255,0.45);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-      border-color: rgba(255, 255, 255, 0.6);
-    }
-    
-    .horizontal-service-item:hover::before {
-      left: 100%;
-    }
-    
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -320,6 +226,101 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+    }
+    
+    /* 新增：水平项目容器样式 */
+    .horizontal-projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    
+    .horizontal-project-card {
+      background: rgba(255,255,255,var(--card-opacity));
+      backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
+      -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, var(--border-opacity-light));
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      min-height: auto;
+      width: calc(20% - 8px); /* 每行最多5个 */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
+    }
+    
+    .horizontal-project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2px;
+      right: -2px;
+      bottom: 0;
+      background: linear-gradient(135deg, #f696c6, #fbb6d8, #fdd7e8);
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .horizontal-project-card:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+    
+    .horizontal-project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .horizontal-service-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    .horizontal-service-item {
+      flex: 1;
+      min-width: 150px;
+      background: rgba(255,255,255,var(--service-opacity));
+      backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
+      -webkit-backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
+      padding: 8px 10px;
+      margin: 4px 0;
+      border-radius: 8px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, var(--border-opacity-strong));
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, var(--shadow-opacity-light));
+    }
+    
+    .horizontal-service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .horizontal-service-item:hover {
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .horizontal-service-item:hover::before {
+      left: 100%;
     }
     .modal-overlay {
       position: fixed;
