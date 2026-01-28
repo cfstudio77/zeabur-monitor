@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -191,7 +191,7 @@
       backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
       -webkit-backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
       padding: 8px 10px;
-      margin: 4px 0;
+      margin: 0;
       border-radius: 8px;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       border: 1px solid rgba(255, 255, 255, var(--border-opacity-strong));
@@ -202,6 +202,9 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 1px 4px rgba(0, 0, 0, var(--shadow-opacity-light));
+      flex: 1;
+      min-width: calc(20% - 8px); /* 每行最多5个项目 */
+      max-width: calc(20% - 8px);
     }
     .service-item::before {
       content: '';
@@ -225,7 +228,10 @@
     .services-container {
       flex: 1;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: flex-start;
     }
     .modal-overlay {
       position: fixed;
