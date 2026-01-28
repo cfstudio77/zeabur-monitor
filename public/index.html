@@ -109,102 +109,6 @@
       border-radius: 10px;
       transition: background 0.2s;
     }
-    
-    /* 用户信息区域样式优化 */
-    .account-header > div:first-child {
-      flex: 1;
-    }
-    
-    .account-header > div:last-child {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-      min-width: 100px;
-    }
-    
-    /* 服务器信息区域样式 */
-    .server-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      font-size: 12px;
-    }
-    
-    .server-info > div {
-      flex: 1;
-      text-align: center;
-    }
-    
-    .server-name {
-      font-weight: bold;
-      color: #333;
-    }
-    
-    .server-usage {
-      color: #666;
-    }
-    
-    /* 项目统计区域样式 */
-    .project-stats {
-      display: flex;
-      justify-content: space-around;
-      margin: 10px 0;
-      padding: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
-      font-size: 12px;
-    }
-    
-    .project-stat-item {
-      text-align: center;
-    }
-    
-    .stat-number {
-      font-weight: bold;
-      font-size: 14px;
-      color: #4ade80;
-    }
-    
-    .stat-label {
-      color: #999;
-    }
-    
-    /* 域名区域样式 */
-    .domain-section {
-      margin-top: 6px;
-      padding-top: 6px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .domain-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 4px;
-    }
-    
-    .domain-item {
-      flex: 1;
-      min-width: 120px;
-      padding: 4px 8px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 10px;
-      font-weight: 600;
-      text-align: center;
-      transition: all 0.2s;
-    }
-    
-    .domain-item:hover {
-      transform: translateY(-1px);
-    }
     .account-header:hover {
       background: rgba(255,255,255,0.1);
     }
@@ -222,20 +126,15 @@
     }
     .balance.low { color: #ff9800; }
     .balance.critical { color: #f44336; }
-    .projects-grid {
+    .horizontal-projects-container {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       gap: 10px;
       margin-top: 10px;
-      overflow-x: auto;
-      padding: 5px 0;
-      /* 添加滚动条样式 */
-      scrollbar-width: thin;
-      scrollbar-color: #f696c6 transparent;
+      align-items: stretch;
     }
-    
-    /* 修改项目卡片为固定宽度 */
-    .project-card {
+    .horizontal-project-item {
       background: rgba(255,255,255,var(--card-opacity));
       backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
       -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
@@ -246,84 +145,86 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      min-height: auto;
-      width: 320px; /* 增加宽度以容纳更多内容 */
-      height: auto;
-      min-height: 220px;
+      min-height: 200px;
+      width: 240px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
     }
-    
-    /* 优化项目名称区域 */
-    .project-name {
-      font-weight: 600;
-      font-size: 14px;
-      color: #333;
-      margin-bottom: 8px;
+    .user-project-container {
+      display: grid;
+      grid-template-columns: max-content 1fr 1fr;
+      grid-template-rows: auto auto auto auto auto auto auto;
+      gap: 8px;
+      align-items: start;
+      padding: 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background-color: #f8fafc;
+    }
+    .user-header {
+      grid-column: 1 / 4;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #cbd5e1;
     }
-    
-    /* 项目信息区域 */
-    .project-meta {
+    .user-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .user-remaining {
+      font-size: 14px;
+      color: #48bb78;
+    }
+    .server-info {
+      grid-column: 1 / 4;
       display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #999;
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      gap: 20px;
     }
-    
-    /* 服务统计信息 */
-    .project-stats-row {
+    .server-item {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 11px;
-      color: #666;
+      flex-direction: column;
+      min-width: 150px;
     }
-    
-    /* 服务项容器 */
-    .services-container {
-      flex: 1;
-      overflow-y: auto;
-      max-height: 120px;
-      padding-right: 4px;
+    .server-name {
+      font-weight: 500;
+      margin-bottom: 4px;
     }
-    
-    /* 滚动条样式 */
-    .services-container::-webkit-scrollbar {
-      width: 4px;
+    .server-usage {
+      color: #4a5568;
     }
-    
-    .services-container::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
+    .server-address {
+      grid-column: 1 / 4;
+      display: flex;
+      gap: 20px;
     }
-    
-    .services-container::-webkit-scrollbar-thumb {
-      background: #f696c6;
-      border-radius: 2px;
+    .project-stats {
+      grid-column: 1 / 4;
+      display: flex;
+      gap: 20px;
     }
-    
-    /* 优化横向滚动条样式 */
-    .projects-grid::-webkit-scrollbar {
-      height: 6px;
+    .project-list {
+      grid-column: 1 / 4;
+      display: flex;
+      gap: 20px;
     }
-    
-    .projects-grid::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
+    .domain-list {
+      grid-column: 1 / 4;
+      display: flex;
+      gap: 20px;
     }
-    
-    .projects-grid::-webkit-scrollbar-thumb {
-      background: #f696c6;
-      border-radius: 3px;
+    .manage-icon {
+      grid-column: 1 / 4;
+      text-align: center;
+      padding-top: 8px;
     }
-    
-    .projects-grid::-webkit-scrollbar-thumb:hover {
-      background: #fbb6d8;
+    .version-stats {
+      grid-column: 1 / 4;
+      padding-top: 8px;
+      border-top: 1px solid #cbd5e1;
+      margin-top: 8px;
     }
     @keyframes shimmer {
       0% { background-position: -1000px 0; }
@@ -340,8 +241,8 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
-      min-height: auto;
-      height: 100%;
+      min-height: 200px;
+      width: 240px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
     }
@@ -840,16 +741,45 @@
               <div style="font-size: 12px; color: #666; margin-bottom: 10px; padding: 10px; background: #f0f9ff; border-radius: 6px;">
                 💡 以下账号来自服务器配置（.env 文件），无法在此删除
               </div>
-              <div v-for="account in accounts" :key="'server-' + account.name" 
-                   style="background: #f9fafb; padding: 15px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                <div style="flex: 1;">
-                  <div style="font-weight: 600; color: #333; margin-bottom: 4px;">{{ account.name }}</div>
-                  <div style="font-size: 12px; color: #999;">{{ account.data?.email || account.data?.username || '服务器配置' }}</div>
-                </div>
-                <span style="font-size: 12px; color: #999; padding: 6px 12px; background: #e5e7eb; border-radius: 6px;">
-                  🔒 服务器配置
-                </span>
-              </div>
+              <div class="user-project-container">
+        <div class="user-header">
+          <div class="user-name">{{ account.name }}</div>
+          <div class="user-remaining">{{ account.data?.email || account.data?.username || '服务器配置' }} | ${{ (account.data.credit / 100).toFixed(2) }}</div>
+        </div>
+        <div class="server-info">
+          <div class="server-item" v-for="project in account.projects" :key="project._id">
+            <div class="server-name">{{ project.name }}</div>
+            <div class="server-usage">$ {{ formatCost(project.cost) }}</div>
+          </div>
+        </div>
+        <div class="server-address">
+          <div class="address-item" v-for="project in account.projects" :key="project._id">
+            <div>{{ project.region }}</div>
+          </div>
+        </div>
+        <div class="project-stats">
+          <div class="stats-item" v-for="project in account.projects" :key="project._id">
+            <div>服务: {{ project.services.length }}</div>
+            <div>运行: {{ project.services.filter(s => s.status === 'RUNNING').length }}</div>
+          </div>
+        </div>
+        <div class="project-list">
+          <div class="project-item" v-for="project in account.projects" :key="project._id">
+            <div>{{ project.name }}</div>
+          </div>
+        </div>
+        <div class="domain-list">
+          <div class="domain-item" v-for="project in account.projects" :key="project._id">
+            <div v-for="service in project.services" :key="service._id">{{ service.name }}</div>
+          </div>
+        </div>
+        <div class="manage-icon">
+          <button @click="toggleAccount(account.name)">⚙️ 管理</button>
+        </div>
+        <div class="version-stats">
+          <div>版本统计信息</div>
+        </div>
+      </div>
             </div>
             
             <div v-if="managedAccounts.length === 0 && accounts.length === 0" style="text-align: center; color: #999; padding: 30px;">
@@ -1048,8 +978,8 @@
           ❌ 错误: {{ account.error }}
         </div>
         
-        <div v-if="account.projects && isAccountExpanded(account.name)" class="projects-grid">
-          <div v-for="project in account.projects" :key="project._id" class="project-card">
+        <div v-if="account.projects && isAccountExpanded(account.name)" class="horizontal-projects-container">
+          <div class="horizontal-project-item" v-for="project in account.projects" :key="project._id">
             <!-- 项目头部 -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <div class="project-name" style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0;">
@@ -2152,71 +2082,6 @@
           }
           
           return false;
-        }
-      },
-      mounted() {
-        // 在挂载完成后初始化拖拽滚动功能
-        this.$nextTick(() => {
-          this.initDragScroll();
-        });
-      },
-      methods: {
-        // ... 其他方法保持不变 ...
-        
-        // 初始化拖拽滚动功能
-        initDragScroll() {
-          // 为所有项目网格添加拖拽滚动功能
-          const grids = document.querySelectorAll('.projects-grid');
-          grids.forEach(grid => {
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-            
-            grid.addEventListener('mousedown', (e) => {
-              isDown = true;
-              startX = e.pageX - grid.offsetLeft;
-              scrollLeft = grid.scrollLeft;
-              grid.style.cursor = 'grabbing';
-            });
-            
-            grid.addEventListener('mouseleave', () => {
-              isDown = false;
-              grid.style.cursor = 'default';
-            });
-            
-            grid.addEventListener('mouseup', () => {
-              isDown = false;
-              grid.style.cursor = 'default';
-            });
-            
-            grid.addEventListener('mousemove', (e) => {
-              if (!isDown) return;
-              e.preventDefault();
-              const x = e.pageX - grid.offsetLeft;
-              const walk = (x - startX) * 2; // 拖拽速度
-              grid.scrollLeft = scrollLeft - walk;
-            });
-            
-            // 触摸设备支持
-            grid.addEventListener('touchstart', (e) => {
-              const touch = e.touches[0];
-              isDown = true;
-              startX = touch.pageX - grid.offsetLeft;
-              scrollLeft = grid.scrollLeft;
-            });
-            
-            grid.addEventListener('touchend', () => {
-              isDown = false;
-            });
-            
-            grid.addEventListener('touchmove', (e) => {
-              if (!isDown) return;
-              const touch = e.touches[0];
-              const x = touch.pageX - grid.offsetLeft;
-              const walk = (x - startX) * 2;
-              grid.scrollLeft = scrollLeft - walk;
-            });
-          });
         }
       }
     }).mount('#app');
