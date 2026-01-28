@@ -133,34 +133,98 @@
       margin-top: 10px;
     }
     
-    .project-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      width: 100%;
-    }
-    
-    .project-card {
+    .horizontal-project-card {
       background: rgba(255,255,255,var(--card-opacity));
       backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
       -webkit-backdrop-filter: blur(var(--blur-amount-small)) saturate(var(--saturate-amount));
       border-radius: 12px;
       padding: 12px;
-      border: 1px solid rgba(255,255,255,var(--border-opacity-light));
+      border: 1px solid rgba(255, 255, 255, var(--border-opacity-light));
       position: relative;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
       min-height: auto;
-      height: 100%;
-      overflow: hidden;
+      width: calc(20% - 8px); /* 每行最多5个 */
       box-shadow: 0 2px 8px rgba(0, 0, 0, var(--shadow-opacity));
     }
     
-    .project-card.horizontal-layout {
+    .horizontal-project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2px;
+      right: -2px;
+      bottom: 0;
+      background: linear-gradient(135deg, #f696c6, #fbb6d8, #fdd7e8);
+      border-radius: 16px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .horizontal-project-card:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+    
+    .horizontal-project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .horizontal-service-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    .horizontal-service-item {
       flex: 1;
-      min-width: calc(20% - 8px); /* 最多5个项目一行 */
-      max-width: calc(20% - 8px);
+      min-width: 150px;
+      background: rgba(255,255,255,var(--service-opacity));
+      backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
+      -webkit-backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
+      padding: 8px 10px;
+      margin: 4px 0;
+      border-radius: 8px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(255, 255, 255, var(--border-opacity-strong));
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, var(--shadow-opacity-light));
+    }
+    
+    .horizontal-service-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: left 0.5s;
+    }
+    
+    .horizontal-service-item:hover {
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .horizontal-service-item:hover::before {
+      left: 100%;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
     }
     @keyframes shimmer {
       0% { background-position: -1000px 0; }
@@ -256,75 +320,6 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-    }
-    
-    .project-stats {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-      font-size: 11px;
-      color: #666;
-    }
-    
-    .project-stat-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex: 1;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 6px;
-      border-radius: 6px;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 8px;
-    }
-    
-    .service-item.horizontal-service {
-      background: rgba(255,255,255,var(--service-opacity));
-      backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
-      -webkit-backdrop-filter: blur(var(--blur-amount-tiny)) saturate(var(--saturate-amount));
-      padding: 8px 10px;
-      margin: 4px 0;
-      border-radius: 8px;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid rgba(255, 255, 255, var(--border-opacity-strong));
-      min-height: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, var(--shadow-opacity-light));
-    }
-    
-    .service-name {
-      font-weight: 600;
-      font-size: 12px;
-      color: #333;
-      margin-bottom: 4px;
-    }
-    
-    .service-status {
-      margin: 4px 0;
-    }
-    
-    .service-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    
-    .no-services {
-      color: #999;
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
-      grid-column: 1 / -1;
     }
     .modal-overlay {
       position: fixed;
@@ -955,7 +950,7 @@
         </div>
         
         <div v-if="account.projects && isAccountExpanded(account.name)" class="horizontal-projects-container">
-          <div v-for="project in account.projects" :key="project._id" class="project-card horizontal-layout">
+          <div v-for="project in account.projects" :key="project._id" class="horizontal-project-card">
             <!-- 项目头部 -->
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <div class="project-name" style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 0;">
@@ -988,62 +983,62 @@
               <span>📍 {{ project.region }}</span>
               <span>本月用量</span>
             </div>
-            <!-- 项目统计信息 -->
-            <div class="project-stats">
-              <div class="project-stat-item">
+            <div style="display: flex; gap: 10px; margin-bottom: 6px; font-size: 11px; color: #666;">
+              <span style="display: flex; align-items: center; gap: 4px;">
                 <span>🔧</span>
                 <span style="font-weight: 600;">{{ project.services.length }}</span>
                 <span>个服务</span>
-              </div>
-              <div class="project-stat-item">
+              </span>
+              <span style="display: flex; align-items: center; gap: 4px;">
                 <span>✅</span>
                 <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'RUNNING').length }}</span>
                 <span>运行中</span>
-              </div>
-              <div class="project-stat-item">
+              </span>
+              <span style="display: flex; align-items: center; gap: 4px;">
                 <span>⏸️</span>
                 <span style="font-weight: 600;">{{ project.services.filter(s => s.status === 'SUSPENDED').length }}</span>
                 <span>已暂停</span>
+              </span>
+            </div>
+            <div class="horizontal-service-container">
+            <div v-for="service in project.services" :key="service._id" class="horizontal-service-item">
+              <!-- 服务名称 -->
+              <div style="font-weight: 600; font-size: 12px; color: #333; margin-bottom: 6px;">
+                {{ service.name }}
+              </div>
+              
+              <!-- 域名 -->
+              <div v-if="getServiceDomains(service).length > 0" style="margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 10px;">
+                <div v-for="domain in getServiceDomains(service)" 
+                     :key="domain" 
+                     style="color: #666; margin-bottom: 2px; word-break: break-all;">
+                  <a :href="'https://' + domain" target="_blank" style="color: #667eea; text-decoration: none;">{{ domain }}</a>
+                </div>
+              </div>
+              
+              <!-- 操作按钮 -->
+              <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                <span :class="['status', service.status.toLowerCase()]">
+                  {{ service.status === 'RUNNING' ? '运行中' : service.status === 'SUSPENDED' ? '已暂停' : service.status }}
+                </span>
+                <button v-if="service.status === 'RUNNING'" 
+                        @click="pauseService(account, project, service)" 
+                        style="padding: 4px 8px; background: #ff9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                  ⏸️ 暂停
+                </button>
+                <button @click="restartService(account, project, service)" 
+                        style="padding: 4px 8px; background: #007aff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                  {{ service.status === 'SUSPENDED' ? '▶️ 启动' : '🔄 重启' }}
+                </button>
+                <button @click="showServiceLogs(account, project, service)" 
+                        style="padding: 4px 8px; background: #af52de; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
+                  📋 日志
+                </button>
               </div>
             </div>
-            
-            <!-- 服务信息横排显示 -->
-            <div class="services-container">
-              <div class="services-grid">
-                <div v-for="service in project.services" :key="service._id" class="service-item horizontal-service">
-                  <!-- 服务名称 -->
-                  <div class="service-name">
-                    {{ service.name }}
-                  </div>
-                  
-                  <!-- 服务状态 -->
-                  <div class="service-status">
-                    <span :class="['status', service.status.toLowerCase()]">
-                      {{ service.status === 'RUNNING' ? '运行中' : service.status === 'SUSPENDED' ? '已暂停' : service.status }}
-                    </span>
-                  </div>
-                  
-                  <!-- 管理按钮 -->
-                  <div class="service-actions">
-                    <button v-if="service.status === 'RUNNING'" 
-                            @click="pauseService(account, project, service)" 
-                            style="padding: 4px 8px; background: #ff9500; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                      ⏸️ 暂停
-                    </button>
-                    <button @click="restartService(account, project, service)" 
-                            style="padding: 4px 8px; background: #007aff; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                      {{ service.status === 'SUSPENDED' ? '▶️ 启动' : '🔄 重启' }}
-                    </button>
-                    <button @click="showServiceLogs(account, project, service)" 
-                            style="padding: 4px 8px; background: #af52de; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 600;">
-                      📋 日志
-                    </button>
-                  </div>
-                </div>
-                <div v-if="project.services.length === 0" class="no-services">
-                  暂无服务
-                </div>
-              </div>
+            <div v-if="project.services.length === 0" style="color: #999; font-size: 14px; text-align: center; padding: 20px;">
+              暂无服务
+            </div>
             </div>
             
             <!-- 域名 -->
@@ -1938,6 +1933,18 @@
                     });
                   }
                 });
+              }
+            });
+          }
+          return domains;
+        },
+        // 获取服务的域名
+        getServiceDomains(service) {
+          const domains = [];
+          if (service.domains && service.domains.length > 0) {
+            service.domains.forEach(d => {
+              if (d.domain) {
+                domains.push(d.domain);
               }
             });
           }
